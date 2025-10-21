@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSINGUZI ISAAC | Systems & Web Developer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style id="app-style">
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004d99;
+            --accent-color: #66b3ff;
+            --light-color: #e6f2ff;
+            --dark-color: #002952;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover, 
+        .navbar-nav .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .navbar-shrink {
+            padding: 8px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(135deg, var(--light-color) 0%, #ffffff 100%);
+            padding: 150px 0 100px;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .hero-img {
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hero-img:hover {
+            transform: translateY(-10px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 77, 153, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #ffffff;
+        }
+
+        .about-img {
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--light-color);
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-percentage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background-color: #ffffff;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 77, 153, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            transform: translateY(-20px);
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-overlay p {
+            color: #e6f2ff;
+            padding: 0 20px;
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--light-color);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: height 0.5s ease;
+            z-index: -1;
+            border-radius: 15px;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card:hover .service-icon,
+        .service-card:hover h3,
+        .service-card:hover p {
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .service-card p {
+            color: #6c757d;
+            transition: color 0.3s ease;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #ffffff 0%, var(--light-color) 100%);
+        }
+
+        .contact-info-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-info-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-form .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Loading Animation for Contact Form */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: var(--primary-color);
+            color: white;
+            border-bottom: none;
+        }
+
+        .modal-header .btn-close {
+            color: white;
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991.98px) {
+            .hero-content {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .section-padding {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .back-to-top {
+                right: 15px;
+                bottom: 15px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header id="header" class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#home">MUSINGUZI ISAAC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home / Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content">
+                        <h1>Hello, I'm <br><span class="text-primary">Musinguzi Isaac</span></h1>
+                        <h2>A Systems and Web Developer</h2>
+                        <p class="mb-4">Transforming ideas into functional and beautiful digital experiences. Based in Mbarara, Uganda.</p>
+                        <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="images/portifolio.jpg" alt="Musinguzi Isaac" class="img-fluid hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>About Me</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="images/portifolio 2.jpg" alt="About Musinguzi Isaac" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="mb-4">Junior System and Web Developer</h3>
+                    <p>I am a passionate system and web developer based in Mbarara, Uganda, with a focus on creating efficient, user-friendly digital solutions. With a strong foundation in both front-end and back-end technologies, I strive to build applications that not only look great but also deliver exceptional functionality.</p>
+                    <p>My journey in tech began with a fascination for how systems work and how they can be optimized to solve real-world problems. This curiosity led me to pursue knowledge in various programming languages and frameworks, allowing me to develop comprehensive solutions across different platforms.</p>
+                    <p>I specialize in developing web applications, management systems, and network solutions tailored to meet specific business needs. My approach combines technical expertise with a deep understanding of user experience principles to create products that are both powerful and intuitive.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-graduation-cap fs-4 me-3 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-1">Education</h5>
+                                    <p class="mb-0">B.Sc. Computer Science</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-briefcase fs-4 me-3 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-1">Experience</h5>
+                                    <p class="mb-0">3+ Years in Development</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt fs-4 me-3 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-1">Location</h5>
+                                    <p class="mb-0">Mbarara, Uganda</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-language fs-4 me-3 text-primary"></i>
+                                <div>
+                                    <h5 class="mb-1">Languages</h5>
+                                    <p class="mb-0">English, Runyankole</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>My Skills</h2>
+            </div>
+            <div class="row">
+                <!-- Skill Progress Bars -->
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML & CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-percentage" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-percentage" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-percentage" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-percentage" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-percentage" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skill Icons -->
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="row">
+                        <div class="col-md-4 col-6 mb-4">
+                            <div class="skill-card">
+                                <i class="fab fa-html5 skill-icon mb-3"></i>
+                                <h5>HTML5</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mb-4">
+                            <div class="skill-card">
+                                <i class="fab fa-css3-alt skill-icon mb-3"></i>
+                                <h5>CSS3</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mb-4">
+                            <div class="skill-card">
+                                <i class="fab fa-js-square skill-icon mb-3"></i>
+                                <h5>JavaScript</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mb-4">
+                            <div class="skill-card">
+                                <i class="fab fa-php skill-icon mb-3"></i>
+                                <h5>PHP</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mb-4">
+                            <div class="skill-card">
+                                <i class="fas fa-database skill-icon mb-3"></i>
+                                <h5>MySQL</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6 mb-4">
+                            <div class="skill-card">
+                                <i class="fas fa-network-wired skill-icon mb-3"></i>
+                                <h5>Networking</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Management Button -->
+            <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="300">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#skillModal">
+                    <i class="fas fa-plus me-2"></i> Manage Skills
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>My Portfolio</h2>
+            </div>
+            <div class="row">
+                <!-- Portfolio Item 1 -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="portfolio-item">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/19/14/16/man-1839500_960_720.jpg" alt="Student Grading System" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Student Grading System</h3>
+                            <p>A comprehensive system for managing student grades, attendance, and performance analytics.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Item 2 -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="portfolio-item">
+                        <img src="https://cdn.pixabay.com/photo/2016/06/03/13/57/digital-marketing-1433427_960_720.jpg" alt="Digital Information Management System" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Digital Information Management</h3>
+                            <p>A solution for organizing, storing, and retrieving digital documents and information.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Item 3 -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="portfolio-item">
+                        <img src="https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581_960_720.jpg" alt="Library Management System" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Library Management System</h3>
+                            <p>An efficient system for cataloging books, managing loans, and tracking library resources.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Item 4 -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="portfolio-item">
+                        <img src="https://cdn.pixabay.com/photo/2018/05/18/15/30/web-design-3411373_960_720.jpg" alt="Corporate Website" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Corporate Website</h3>
+                            <p>Modern responsive website with content management system for a local business.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Item 5 -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="portfolio-item">
+                        <img src="https://cdn.pixabay.com/photo/2018/01/17/07/06/laptop-3087585_960_720.jpg" alt="Inventory Management System" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Inventory Management System</h3>
+                            <p>A system for tracking stock levels, orders, sales, and deliveries for retail businesses.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Item 6 -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="portfolio-item">
+                        <img src="https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557396_960_720.jpg" alt="HR Management Portal" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>HR Management Portal</h3>
+                            <p>Employee management system with attendance tracking, leave management, and performance reviews.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Management Button -->
+            <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="300">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                    <i class="fas fa-plus me-2"></i> Manage Portfolio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>My Services</h2>
+            </div>
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code service-icon"></i>
+                        <h3>Web Design</h3>
+                        <p>Creating beautiful, responsive websites that provide an exceptional user experience across all devices.</p>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="service-card">
+                        <i class="fas fa-cogs service-icon"></i>
+                        <h3>System Development</h3>
+                        <p>Building custom software solutions and management systems tailored to your business needs.</p>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="service-card">
+                        <i class="fas fa-network-wired service-icon"></i>
+                        <h3>Networking</h3>
+                        <p>Setting up secure and efficient network infrastructure for businesses of all sizes.</p>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <div class="service-card">
+                        <i class="fas fa-database service-icon"></i>
+                        <h3>Database Management</h3>
+                        <p>Designing and optimizing databases for improved performance and data security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Location</h4>
+                            <p>Mbarara, Uganda</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Email</h4>
+                            <p>isaacmusinguzi152@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h4>Phone</h4>
+                            <p>+256 764192627</p>
+                            <p>+256 752661674</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="javascript:void(0)" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="javascript:void(0)" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="javascript:void(0)" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="6e9184ab-9f83-478b-8754-b7d0c4d22603">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            Send Message
+                            <span id="loadingIndicator" style="display: none;"><span class="loading"></span></span>
+                        </button>
+                        <div class="mt-3" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>MUSINGUZI ISAAC</h5>
+                    <p>System and Web Developer based in Mbarara, Uganda. Specializing in creating beautiful and functional web applications and management systems.</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Get In Touch</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Mbarara, Uganda</li>
+                            <li><i class="fas fa-envelope me-2"></i> isaacmusinguzi152@example.com</li>
+                            <li><i class="fas fa-phone-alt me-2"></i> +256764192627/+256752661674</li>
+                        </ul>
+                        <div class="social-links mt-3">
+                            <a href="https://www.facebook.com/isaac successMusinguzi" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.github.com/MusinguziIsaac" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/isaac-musinguzi-m" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Musinguzi Isaac. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Skill Management Modal -->
+    <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="skillModalLabel">Manage Skills</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSkillForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="skillName" class="form-label">Skill Name</label>
+                                <input type="text" class="form-control" id="skillName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="skillPercentage" class="form-label">Proficiency (%)</label>
+                                <input type="number" class="form-control" id="skillPercentage" min="1" max="100" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="skillIcon" class="form-label">Icon Class (Font Awesome)</label>
+                            <input type="text" class="form-control" id="skillIcon" placeholder="e.g., fab fa-html5">
+                            <small class="text-muted">Find icons at <a href="https://fontawesome.com/icons" target="_blank">Font Awesome</a></small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Skill</button>
+                    </form>
+                    
+                    <hr>
+                    
+                    <h5 class="mt-4 mb-3">Current Skills</h5>
+                    <div id="skillsList" class="list-group">
+                        <!-- Skills will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveSkillsBtn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Management Modal -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalLabel">Manage Portfolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addPortfolioForm">
+                        <div class="mb-3">
+                            <label for="projectTitle" class="form-label">Project Title</label>
+                            <input type="text" class="form-control" id="projectTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectDescription" class="form-label">Project Description</label>
+                            <textarea class="form-control" id="projectDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="projectImage" class="form-label">Image URL</label>
+                            <input type="url" class="form-control" id="projectImage" placeholder="https://example.com/image.jpg" required>
+                            <small class="text-muted">Use a URL from a site like Pixabay or Unsplash</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Project</button>
+                    </form>
+                    
+                    <hr>
+                    
+                    <h5 class="mt-4 mb-3">Current Projects</h5>
+                    <div id="projectsList" class="row">
+                        <!-- Projects will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveProjectsBtn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script id="app-script">
+        // Initialize AOS Animation Library
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar Shrink on Scroll
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-shrink');
+                    backToTop.classList.add('show');
+                } else {
+                    navbar.classList.remove('navbar-shrink');
+                    backToTop.classList.remove('show');
+                }
+                
+                // Update active menu item based on scroll position
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth Scrolling for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu after clicking
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            navbarCollapse.classList.remove('show');
+                        }
+                    }
+                });
+            });
+            
+            // Back to Top Button Click
+            document.querySelector('.back-to-top').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const formMessage = document.getElementById('formMessage');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Form validation
+                const name = this.elements.name.value.trim();
+                const email = this.elements.email.value.trim();
+                const subject = this.elements.subject.value.trim();
+                const message = this.elements.message.value.trim();
+                
+                if (!name || !email || !subject || !message) {
+                    formMessage.innerHTML = '<div class="alert alert-danger">Please fill all fields</div>';
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    formMessage.innerHTML = '<div class="alert alert-danger">Please enter a valid email address</div>';
+                    return;
+                }
+                
+                // Show loading indicator
+                submitBtn.disabled = true;
+                loadingIndicator.style.display = 'inline-block';
+                formMessage.innerHTML = '';
+                
+                // Simulate form submission with a timeout
+                setTimeout(() => {
+                    // This would be replaced with actual API call in production
+                    formMessage.innerHTML = '<div class="alert alert-success">Thank you for your message! I will get back to you soon.</div>';
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    loadingIndicator.style.display = 'none';
+                }, 1500);
+            });
+            
+            // Skills Management
+            const skillsData = JSON.parse(localStorage.getItem('portfolioSkills')) || [
+                { name: 'HTML & CSS', percentage: 90, icon: 'fab fa-html5' },
+                { name: 'JavaScript', percentage: 85, icon: 'fab fa-js-square' },
+                { name: 'PHP', percentage: 80, icon: 'fab fa-php' },
+                { name: 'MySQL', percentage: 75, icon: 'fas fa-database' },
+                { name: 'Python', percentage: 70, icon: 'fab fa-python' }
+            ];
+            
+            const addSkillForm = document.getElementById('addSkillForm');
+            const skillsList = document.getElementById('skillsList');
+            const saveSkillsBtn = document.getElementById('saveSkillsBtn');
+            
+            // Display skills in the modal
+            function displaySkillsInModal() {
+                skillsList.innerHTML = '';
+                
+                skillsData.forEach((skill, index) => {
+                    const skillItem = document.createElement('div');
+                    skillItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+                    skillItem.innerHTML = `
+                        <div>
+                            <i class="${skill.icon || 'fas fa-code'} me-2"></i>
+                            <strong>${skill.name}</strong> - ${skill.percentage}%
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-sm btn-outline-danger delete-skill" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    skillsList.appendChild(skillItem);
+                });
+                
+                // Add delete event listeners
+                document.querySelectorAll('.delete-skill').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        skillsData.splice(index, 1);
+                        displaySkillsInModal();
+                    });
+                });
+            }
+            
+            // Add new skill
+            addSkillForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('skillName').value.trim();
+                const percentage = parseInt(document.getElementById('skillPercentage').value);
+                const icon = document.getElementById('skillIcon').value.trim();
+                
+                skillsData.push({ name, percentage, icon });
+                displaySkillsInModal();
+                
+                // Reset form
+                addSkillForm.reset();
+            });
+            
+            // Save skills
+            saveSkillsBtn.addEventListener('click', function() {
+                localStorage.setItem('portfolioSkills', JSON.stringify(skillsData));
+                
+                // Show success message
+                alert('Skills saved successfully!');
+                
+                // Close modal
+                const skillModal = bootstrap.Modal.getInstance(document.getElementById('skillModal'));
+                skillModal.hide();
+            });
+            
+            // Portfolio Management
+            const projectsData = JSON.parse(localStorage.getItem('portfolioProjects')) || [
+                { 
+                    title: 'Student Grading System', 
+                    description: 'A comprehensive system for managing student grades, attendance, and performance analytics.',
+                    image: 'https://cdn.pixabay.com/photo/2016/11/19/14/16/man-1839500_960_720.jpg'
+                },
+                { 
+                    title: 'Digital Information Management System', 
+                    description: 'A solution for organizing, storing, and retrieving digital documents and information.',
+                    image: 'https://cdn.pixabay.com/photo/2016/06/03/13/57/digital-marketing-1433427_960_720.jpg'
+                },
+                { 
+                    title: 'Library Management System', 
+                    description: 'An efficient system for cataloging books, managing loans, and tracking library resources.',
+                    image: 'https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581_960_720.jpg'
+                }
+            ];
+            
+            const addPortfolioForm = document.getElementById('addPortfolioForm');
+            const projectsList = document.getElementById('projectsList');
+            const saveProjectsBtn = document.getElementById('saveProjectsBtn');
+            
+            // Display projects in the modal
+            function displayProjectsInModal() {
+                projectsList.innerHTML = '';
+                
+                projectsData.forEach((project, index) => {
+                    const projectItem = document.createElement('div');
+                    projectItem.className = 'col-md-6 mb-3';
+                    projectItem.innerHTML = `
+                        <div class="card">
+                            <img src="${project.image}" class="card-img-top" alt="${project.title}" style="height: 150px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">${project.title}</h5>
+                                <p class="card-text small">${project.description.substring(0, 100)}${project.description.length > 100 ? '...' : ''}</p>
+                                <button type="button" class="btn btn-sm btn-outline-danger delete-project" data-index="${index}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    projectsList.appendChild(projectItem);
+                });
+                
+                // Add delete event listeners
+                document.querySelectorAll('.delete-project').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        projectsData.splice(index, 1);
+                        displayProjectsInModal();
+                    });
+                });
+            }
+            
+            // Add new project
+            addPortfolioForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('projectTitle').value.trim();
+                const description = document.getElementById('projectDescription').value.trim();
+                const image = document.getElementById('projectImage').value.trim();
+                
+                projectsData.push({ title, description, image });
+                displayProjectsInModal();
+                
+                // Reset form
+                addPortfolioForm.reset();
+            });
+            
+            // Save projects
+            saveProjectsBtn.addEventListener('click', function() {
+                localStorage.setItem('portfolioProjects', JSON.stringify(projectsData));
+                
+                // Show success message
+                alert('Projects saved successfully!');
+                
+                // Close modal
+                const portfolioModal = bootstrap.Modal.getInstance(document.getElementById('portfolioModal'));
+                portfolioModal.hide();
+            });
+            
+            // Initialize modals
+            document.getElementById('skillModal').addEventListener('show.bs.modal', function() {
+                displaySkillsInModal();
+            });
+            
+            document.getElementById('portfolioModal').addEventListener('show.bs.modal', function() {
+                displayProjectsInModal();
+            });
+            
+            // Initialize skill bars animation
+            function animateSkillBars() {
+                const skillBars = document.querySelectorAll('.skill-percentage');
+                skillBars.forEach(bar => {
+                    const percentage = bar.parentElement.previousElementSibling.lastElementChild.textContent;
+                    bar.style.width = percentage;
+                });
+            }
+            
+            // Call on page load and whenever the skills section is visible
+            animateSkillBars();
+            
+            // Intersection Observer for skill bars
+            const skillsSection = document.getElementById('skills');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateSkillBars();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(skillsSection);
+        });
+    </script>
+</body>
+</html>
